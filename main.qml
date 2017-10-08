@@ -3,25 +3,56 @@ import QtQuick.Window 2.2
 Item {
     anchors.fill: parent
 
+    property int rounding:    10
+    property int margin:       8
+    property int borderWidth:  4
+    property int pointSize:   32
+    property string family:   "Monospace"
+
     Rectangle {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
+        anchors.left:   parent.left
+        anchors.right:  parent.right
+        anchors.top:    parent.top
         anchors.bottom: parent.verticalCenter
-        color: "steelblue"
-        radius: 64
-        anchors.margins: 4
+
+        color: "gray"
+        radius: rounding
+        anchors.margins: margin
+        border.width:    borderWidth
+        border.color:    "black"
+
+        TextInput {
+            id: t0
+            anchors.centerIn: parent
+            text:             ""
+            font.family:      family
+            font.pointSize:   pointSize
+            maximumLength:    16
+            focus:            true
+        }
     }
+
     Rectangle {
-        y: parent.height / 2
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.verticalCenter
+        anchors.left:   parent.left
+        anchors.right:  parent.right
+        anchors.top:    parent.verticalCenter
         anchors.bottom: parent.bottom
-        color: "#800000FF"
-        radius: 64
-        anchors.margins: 4
+
+        color: "gray"
+        radius: rounding
+        anchors.margins: margin
+        border.width:    borderWidth
+        border.color:    "black"
+
+        Text {
+            id: t1
+            anchors.centerIn: parent
+            text:             t0.text
+            font.family:      family
+            font.pointSize:   pointSize
+        }
     }
+
     Component.onCompleted: {
         console.log("Completed Running")
     }
