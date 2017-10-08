@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
 
     QQuickView view;
     QString filePath = QCoreApplication::applicationDirPath() + "/" + "main.qml";
+
+    view.setBaseSize(QSize(512, 512));
     view.setSource(QUrl::fromLocalFile(filePath));
     view.show();
 
